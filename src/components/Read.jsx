@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const Read = () => {
 
     const [data, setData] = useState([]);
+    const [tabledark, setTabledark] = useState("");
 
     function getData() {
         axios
@@ -36,8 +37,24 @@ const Read = () => {
 
     return (
         <>
-            <h2>READ Operation</h2>
-            <table className="table">
+            <div class="form-check form-switch">
+                <input 
+                    className="form-check-input" 
+                    type="checkbox"
+                    onClick={() => {
+                        (tabledark == "table-dark") ? setTabledark("") : setTabledark("table-dark");
+                    }}
+                    />
+            </div>
+            <div className='d-flex justify-content-between'>
+                <h2>READ Operation</h2>
+                <Link to="/">
+                    <button className='btn btn-secondary'>Create</button>
+                </Link>
+
+            </div>
+
+            <table className={`table ${tabledark}`}>
                 <thead>
                     <tr>
                         <th scope="col">#</th>
